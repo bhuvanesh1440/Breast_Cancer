@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title> Breast Cancer </title>
+   <style>
+	body{
+	    background-image: linear-gradient(to bottom, #012838,#037db0);
+		background-repeat:no-repeat;
+		height:100%;
+		background-attachment:fixed;
+	}
+	.section{
+	  color:white;
+	  font-size:50px;
+	  font-family: Times New Roman;
+	  text-align:center;
+	  margin-top:20px;
+	}
+	.buthead{
+		margin-left:150px;
+		margin-top:50px;
+	}
+	.chead a{
+		padding: 15px 123px;
+		width:80px;
+		font-size: 16px;
+		color: white;
+		background-color:#01597d;
+		border-radius:5px;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.chead a:active{
+		background-color:white;
+		color:#01597d;
+	}
+	.container{
+	    background-color:white;
+		margin-top:15px;
+		margin-left:145px;
+		margin-right:145px;
+		border-radius:5px;
+		height:100%;
+		
+	}
+	.selectWrapper{
+		border-radius:8px;
+		display:inline-block;
+		overflow:hidden;
+		background:#cccccc;
+		border:1px solid #cccccc;
+		margin-left:20px;
+	}
+	.selectBox{
+		  width:230px;
+		  height:33px;
+		  border:1px;
+		  outline:none;
+	}
+	p.att{
+		font-size:16px;
+		font-family: "Myriad Pro", "sans-serif";
+	}
+
+	.btn {
+		background-color: #037db0;
+		border: none;
+		color: white;
+		padding: 10px;
+		margin-left:20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+		border-radius: 8px;
+	}
+
+  </style>
+</head>
+ <body>
+	<div class="main">
+	  <div class="header">
+		<div class="section">
+		  BREAST  CANCER  DETECTION
+		</div>
+	  </div>
+	  <div class="buthead">
+	  <div class="chead">
+		 <a href="{{url_for('home')}}">HOME</a> 
+		 <a href="{{url_for('riskpred')}}">RISK  PREDICTION</a>
+   		 <a href="{{url_for('detect')}}">DETECTION</a>
+	  </div>
+	</div>
+	<div class="container">
+	 <div class="resmat" style="float:left; width:500px;padding-top:45px;padding-right:30px;padding-left:85px; ">
+	    <h1>What is Tumor?</h1>
+	    <p style="text-align:justify; line-height:23px;">A tumor is a mass of abnormal tissue. There are two types of breast cancer tumors: those that are non-cancerous, or benign, and those that are cancerous, which are malignant.</p>
+	    <h3>Benign Tumors</h3>
+	    <p style="text-align:justify; line-height:23px;">When a tumor is diagnosed as benign, doctors will usually leave it alone rather than remove it. Even though these tumors are not generally aggressive toward surrounding tissue, occasionally they may continue to grow, pressing on organs and causing pain or other problems. In these situations, the tumor is removed, allowing pain or complications to subside.</p>
+	    <h3>Malignant Tumors</h3>
+	    <p style="text-align:justify; line-height:23px;">Malignant tumors are cancerous and aggressive because they invade and damage surrounding tissue. When a tumor is suspected to be malignant, the doctor will perform a biopsy to determine the severity or aggressiveness of the tumor.</p>
+	 </div>
+	 <div>
+		<form action="{{url_for('predict')}}" method="post">
+		<table class="tab" style="margin-top:40px; margin-left:450px; padding-top:70px; padding-left:55px;">
+	    
+		<tr>
+	    <td>
+			<div class="selectWrapper">
+  			<select class="selectBox" name="ct">
+				<option>Clump Thickness</option>
+				<option value=1>1</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+				<option value=4>4</option>
+				<option value=5>5</option>
+				<option value=6>6</option>
+				<option value=7>7</option>
+				<option value=8>8</option>
+				<option value=9>9</option>
+				<option value=10>10</option>
+			</select>
+			</div>
+	  </td>
+	  </tr>
+	  <tr>
+	  <td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="ucsize">
+	      <option>Uniformity Cell Size</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	  </td>
+      </tr>
+      <tr>
+	  <td>
+	   <div class="selectWrapper" >
+  		<select class="selectBox" name="ucshape">
+	      <option>Uniformity Cell Shape</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	  </td>
+	  </tr>
+	  <tr>
+	  <td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="ma">
+		  <option>Marginal Adhesion</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	  </td>
+      </tr>
+      <tr>
+	  <td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="secs">
+	      <option>Single Eplithelial Cell Size</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	  </td>
+	  </tr>
+	  <tr>
+	  <td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="bn">
+	      <option>Bare Nuclei</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	 </td>
+     </tr>
+     <tr>
+	   <td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="bc">
+	      <option>Bland Chromatin</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	</td>
+    </tr>
+	<tr>
+	<td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="nn">
+	      <option>Normal Nucleoii</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	 </td>
+     </tr>
+    <tr>
+	<td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="mi">
+	      <option>Mitoses</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+         </select>
+	   </div>
+	</td>
+    </tr>
+	<tr><th style="align:center;"><button type="submit" class="btn">Predict</button></th></tr>
+	</table>
+	</form>
+    <p style="font-family: Arial, Helvetica, sans-serif;text-align:center;padding-bottom:50px;padding-left:10px;">{{ prediction_text }}</p>
+	</div>
+  </div>
+</div>
+</body>
+</html>

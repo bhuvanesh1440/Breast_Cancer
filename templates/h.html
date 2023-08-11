@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title> Breast Cancer </title>
+<style>
+	html{
+		height:100%;
+	}
+	body{
+	    background-image: linear-gradient(to bottom, #012838,#037db0);
+		background-repeat:no-repeat;
+		height:100%;
+		background-attachment:fixed;
+	}
+	.section{
+	  color:white;
+	  font-size:50px;
+	  font-family: Times New Roman;
+	  text-align:center;
+	  margin-top:20px
+	}
+	.buthead{
+		margin-left:150px;
+		margin-top:50px;
+	}
+	.chead a{
+		padding: 15px 123px;
+		width:80px;
+		font-size: 16px;
+		color: white;
+		background-color:#01597d;
+		border-radius:5px;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.chead a:active{
+		background-color:white;
+		color:#01597d;
+	}
+	.container{
+		background-color:white;
+		margin-top:45px;
+		margin-left:140px;
+		margin-right:140px;
+		border-radius:5px;
+	}
+	.his{
+		margin-left:70px;
+		padding-top:30px;
+	}
+	.last{
+	    color:#c80708;
+		font-weight:bold;
+	}
+	img{
+		float:left;
+		padding:20px;
+		height:200px;
+		width:150px;
+	}
+	.his p{
+		
+		padding-top:10px;
+		line-height:25px;
+		padding-right:75px;
+		text-align:justify;
+		padding-bottom:0;
+	}
+	.cause{
+		margin-left:100px;
+		padding-top:15px;
+	}
+	.cause p{
+		
+		padding-top:10px;
+		line-height:25px;
+		padding-right:75px;
+		text-align:justify;
+		padding-bottom:20px;
+	}
+	
+	
+</style>
+</head>
+<body> 
+  <div class="main">
+	<div class="header">
+		<div class="section">
+		  BREAST  CANCER  DETECTION
+		</div>
+	</div>
+	<div class="buthead">
+	<div class="chead">
+		<a href="{{url_for('home')}}">HOME</a> 
+		<a href="{{url_for('riskpred')}}">RISK  PREDICTION</a>
+		<a href="{{url_for('detect')}}">DETECTION</a>
+		
+	  </div>
+	 </div>
+</div>
+	<div class="container">
+	
+	<div>
+      
+          <div class="his">
+            <h1 style="margin-left:20px;">History <span class="last">of Breast Cancer</span></h1>
+            <img src="{{url_for('static',filename='images/founder.jpg')}}" alt="image"/>
+            <p>Breast cancer is the most common cancer in women around the world. It has been widely studied throughout history. In fact, research on breast cancer has helped pave the way for breakthroughs in other types of cancer research.
+			How we treat breast cancer has changed in many ways from the cancer first discovery. But other findings and treatments have remained the same for years. Read on to learn how breast cancer treatments have evolved to what we know today.<br><br>
+			Humans have known about breast cancer for a long time. For example, the Edwin Smith Surgical Papyrus describes cases of breast cancer. This medical text dates back to 3,000 to2,500 B.C.E.
+
+			In ancient Greece, people made votive offerings in the shape of a breast to the god of medicine. And Hippocrates described the stages of breast cancer in the early 400s B.C.E.</p>
+
+		  </div>
+		  <div class="cause">
+		    <h1 style="margin-left:10px;">Cause <span class="last">of Breast Cancer</span></h1>
+			<p>After puberty, a woman's breast consists of fat, connective tissue, and thousands of lobules. These are tiny glands that produce milk for breastfeeding. Tiny tubes, or ducts, carry the milk toward the nipple.
+
+			Cancer causes the cells to multiply uncontrollably. They do not die at the usual point in their life cycle. This excessive cell growth causes cancer because the tumor uses nutrients and energy and deprives the cells around it.
+
+			Breast cancer usually starts in the inner lining of milk ducts or the lobules that supply them with milk. From there, it can spread to other parts of the body.
+
+			</p>
+		  </div>
+		  
+		</div>
+      
+ 
+
+  </div>
+</body>
+</html>

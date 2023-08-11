@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 210px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  /*z-index: 1 Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  /*color: #f1f1f1;*/
+	background:#f1f1f1;
+}
+
+/* Style page content */
+/*.home aside {
+  margin-left: 280px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}*/
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+p{
+text-align="center";
+font-size:16px;
+ font-family: "Myriad Pro", "sans-serif";
+}
+input[type=submit]{
+  background-color: #111; /* Green */
+  border: none;
+  color: white;
+  padding: 12px;
+  margin-left:auto;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px
+}
+</style>
+<script type="text/javascript">
+var numericalValues = new Array();
+numericalValues["age1"]= 10;
+numericalValues["age2"]= 20;
+numericalValues["age3"]= 15;
+numericalValues["firstdegree1"]= 15;
+numericalValues["firstdegree2"]= 20;
+numericalValues["firstdegree3"]= 30;
+numericalValues["gender1"]= 8;
+numericalValues["gender2"]= 10;
+numericalValues["menstrual1"]= 10;
+numericalValues["menstrual2"]= 8;
+numericalValues["menstrual3"]= 7;
+numericalValues["birth1"]= 10;
+numericalValues["birth2"]= 8;
+numericalValues["birth3"]= 7;
+numericalValues["birth4"]=0;
+numericalValues["biopsy1"]=10 ;
+numericalValues["biopsy2"]= 8;
+numericalValues["biopsy3"]= 7;
+numericalValues["race1"]= 10;
+numericalValues["race2"]= 8;
+function getScoreAge()
+{
+//alert("age is called");
+ var scoreAge = 0;
+    var form = document.forms["form"];
+    var age = form.elements["age"];
+    for(var i=0; i<age.length; i++){
+        if(age[i].checked){
+            totalscore = numericalValues[age[i].value];
+            //break;
+        }
+    }
+    return totalscore;
+}
+function getScoreFirstdegree()
+{
+//alert("firstdegree is called");
+ var scoreFirstdegree = 0;
+    var form = document.forms["form"];
+    var firstdegree = form.elements["firstdegree"];
+    for(var i=0; i<firstdegree.length; i++){
+        if(firstdegree[i].checked){
+            totalscore = numericalValues[firstdegree[i].value];
+            //break;
+        }
+    }
+    return totalscore;
+}
+function getScoreGender()
+{
+//alert("gender is called");
+ var scoreGender = 0;
+    var form = document.forms["form"];
+    var gender = form.elements["gender"];
+    for(var i=0; i<gender.length; i++){
+        if(gender[i].checked){
+            totalscore = numericalValues[gender[i].value];
+            //break;
+        }
+    }
+    return totalscore;
+}
+function getScoreMenstrual()
+{
+//alert("menstrual is called");
+ var scoreMenstrual = 0;
+    var form = document.forms["form"];
+    var menstrual = form.elements["menstrual"];
+    for(var i=0; i<menstrual.length; i++){
+        if(menstrual[i].checked){
+            totalscore = numericalValues[menstrual[i].value];
+            //break;
+        }
+    }
+    return totalscore;
+}
+
+
+function getScoreFirstchild()
+{
+//alert("first child is called");
+ var scoreFirstchild = 0;
+    var form = document.forms["form"];
+    var firstchild = form.elements["birth"];
+    for(var i=0; i<firstchild.length; i++){
+        if(firstchild[i].checked){
+            totalscore = numericalValues[firstchild[i].value];
+            //break;
+        }
+    }
+    return totalscore;
+}
+function getScoreBiopsy()
+{
+//alert("biopsy  is called");
+ var scoreBiopsy = 0;
+    var form = document.forms["form"];
+    var biopsy = form.elements["biopsy"];
+    for(var i=0; i<biopsy.length; i++){
+        if(biopsy[i].checked){
+            totalscore = numericalValues[biopsy[i].value];
+            //break;
+        }
+    }
+    return totalscore;
+}
+function getScoreRace()
+{
+//alert("race is called");
+ var scoreRace = 0;
+    var form = document.forms["form"];
+    var race = form.elements["race"];
+    for(var i=0; i<race.length; i++){
+        if(race[i].checked){
+            totalscore = numericalValues[race[i].value];
+            //break;
+        }
+    }
+    return totalscore;
+}
+	
+function getTotal(){
+	alert("Your result is ready");
+    var totalscore1 = getScoreAge() + getScoreFirstdegree()+ getScoreGender()+ getScoreMenstrual() + getScoreFirstchild() + getScoreBiopsy() + getScoreRace();
+	if(totalscore1>=70)
+	{
+	alert("patient is at high risk");
+	}
+	else if(totalscore1>=50 && totalscore<70)
+	{
+	alert("patient is at medium risk");
+	}
+	else{
+	alert("patient is at low risk");
+	}
+}
+</script>
+
+</head>
+
+
+<body>
+<div class="sidenav">
+  <a href="{{ url_for('home')}}">Home</a>
+  <a href="{{ url_for('riskpred')}}">Risk Prediction</a>
+  <a href="{{ url_for('detect')}}">Detection</a>
+</div>
+<div id="main">
+  <div id="header">
+    <div id="section">
+      <div style="font-size: 50px;margin-left: 500px; ">Breast Cancer Detection</div>
+    </div>
+  </div>
+</div>
+<div style="margin-left:350px; margin-right:200px; text-align:center; margin-top:10px;">
+<form id="form" name="form" method="post" action="" >
+<fieldset id="controls">
+
+  <p>1.Please enter the patient age<br>
+  <input type="radio" name="age" id="age1" value="age1" checked="true">
+  <label>10-30</label>
+  <input type="radio" name="age" id="age2" value="age2">
+  <label>30-60</label>
+  <input type="radio" name="age" id="age3" value="age3">
+  <label>60-100</label>
+  </p>
+  
+  <p>2.How many of your sisters,daughters or mother has breast cancer?<br>
+  <input type="radio" name="firstdegree" id="firstdegree1" value="firstdegree1" checked="true">
+  <label>None </label>
+  <input type="radio" name="firstdegree" id="firstdegree2" value="firstdegree2">
+  <label>One</label>
+  <input type="radio" name="firstdegree" id="firstdegree3" value="firstdegree3">
+  <label>More</label>
+  </p>
+
+  <p>3.Enter the gender<br>
+  <input type="radio" name="gender" id="gender1" value="gender1" checked="true">
+  <label>Male</label>
+  <input type="radio" name="gender" id="gender" value="gender2">
+  <label>Female</label>
+  </p>
+
+  <p>4.At what age did your menstrual cycle begins<br>
+  <input type="radio" name="menstrual" id="menstrual1" value="menstrual3">
+  <label>11-12yrs</label>
+  <input type="radio" name="menstrual" id="menstrual2" value="menstrual1" checked="true">
+   <label>12-13yrs </label>
+  <input type="radio" name="menstrual" id="menstrual3" value="menstrual2">
+  <label>14yrs or later </label>
+  </p>
+  
+  <p>5.At what age did you give birth to first child<br>
+  <input type="radio" name="birth" id="birth1" value="birth4">
+  <label>19yrs or earlier</label>
+  <input type="radio" name="birth" id="birth2" value="birth1" checked="true">
+   <label>20-24yrs </label>
+  <input type="radio" name="birth" id="birth3" value="birth2">
+  <label>25-29yrs </label>
+  <input type="radio" name="birth" id="birth4" value="birth3">
+  <label>none</label>
+  </p>
+  
+  <p>6.How many breast biopsies have you had<br>
+  <input type="radio" name="biopsy" id="biopsy1" value="biopsy3">
+  <label>none</label>
+  <input type="radio" name="biopsy" id="biopsy2" value="biopsy1" checked="true">
+   <label>one </label>
+  <input type="radio" name="biopsy" id="biopsy3" value="biopsy2">
+  <label>more </label>
+  </p>
+
+  <p>7.Race<br>
+  <input type="radio" name="race" id="race1" value="race1" checked="true">
+  <label>white</label>
+  <input type="radio" name="race" id="race2" value="race2">
+  <label>black </label>
+  </p>
+  <p>
+    <input type="submit" name="Calculate" id="calculate" value="Calculate" onclick="getTotal()"/>
+  </p>
+  <div id="result"></div>
+  </fieldset>
+  </form>
+</div>
+</body>
+</html>

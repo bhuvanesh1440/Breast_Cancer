@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 210px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  /*z-index: 1 Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  /*color: #f1f1f1;*/
+	background:#f1f1f1;
+}
+/*.sidenav a:active{
+   color : red;
+}*/
+/* Style page content */
+/*.home aside {
+  margin-left: 280px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}*/
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.selectWrapper{
+  border-radius:8px;
+  display:inline-block;
+  overflow:hidden;
+  background:#cccccc;
+  border:1px solid #cccccc;
+  margin-left:20px
+}
+.selectBox{
+  width:230px;
+  height:33px;
+  border:1px;
+  outline:none;
+}
+p.att{
+ font-size:16px;
+ font-family: "Myriad Pro", "sans-serif";
+}
+
+.btn {
+  background-color: #111; /* Green */
+  border: none;
+  color: white;
+  padding: 15px;
+  margin-left:auto;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px
+
+}
+.tab{
+  border: 1px;
+  padding: 35px;
+  box-shadow: 0 0 7px 5px #888888;
+}
+}
+}
+
+</style>
+</head>
+<body>
+
+<div class="sidenav">
+  <a href="{{url_for('home')}}">Home</a>
+  <a href="{{url_for('riskpred')}}">Risk Prediction</a>
+  <a href="{{url_for('detect')}}">Detection</a>
+</div>
+<div id="main">
+  <div id="header">
+    <div id="section">
+      <div style="font-size: 50px;margin-left: 500px; ">Breast Cancer Detection</div>
+    </div>
+  </div>
+  <div id="content" style="margin-left: 250px;">
+    <table class="tab" style="margin-top:30px; margin-left:250px">
+	<form action="{{url_for('predict')}}" method="post">
+
+	<tr>
+	<td><p class="att">Clump Thickness</p></td>
+	<td>
+	  <div class="selectWrapper">
+  		<select class="selectBox" name="ct">
+	          <option>Clump Thickness</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	</td>
+      </tr>
+      <tr>
+	<td><p class="att">Uniformity Cell Size</p></td>
+	<td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="ucsize">
+	          <option>Uniformity Cell Size</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	</td>
+      </tr>
+      <tr>
+	<td><p class="att">Uniformity Cell Shape</p></td>
+	<td>
+	   <div class="selectWrapper" >
+  		<select class="selectBox" name="ucshape">
+	          <option>Uniformity Cell Shape</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	</td>
+      </tr>
+      <tr>
+	<td><p class="att">Marginal Adhesion</p></td>
+	<td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="ma">
+	          <option>Marginal Adhesion</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	</td>
+      </tr>
+      <tr>
+	<td><p class="att">Single Eplithelial Cell Size</p></td>
+	<td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="secs">
+	          <option>Single Eplithelial Cell Size</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	</td>
+      </tr>
+      <tr>
+	<td><p class="att">Bare Nuclei</p></td>
+	<td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="bn">
+	          <option>Bare Nuclei</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	</td>
+      </tr>
+      <tr>
+	<td><p class="att">Bland Chromatin</p></td>
+	<td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="bc">
+	          <option>Bland Chromatin</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	</td>
+      </tr>
+      <tr>
+	<td><p class="att">Normal Nucleoii</p></td>
+	<td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="nn">
+	          <option>Normal Nucleoii</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+		</select>
+	   </div>
+	</td>
+      </tr>
+      <tr>
+	<td><p class="att">Mitoses</p></td>
+	<td>
+	   <div class="selectWrapper">
+  		<select class="selectBox" name="mi">
+	          <option>Mitoses</option>
+		  <option value=1>1</option>
+		  <option value=2>2</option>
+		  <option value=3>3</option>
+		  <option value=4>4</option>
+		  <option value=5>5</option>
+		  <option value=6>6</option>
+		  <option value=7>7</option>
+		  <option value=8>8</option>
+		  <option value=9>9</option>
+		  <option value=10>10</option>
+                </select>
+	   </div>
+	</td>
+      </tr>
+	
+	<tr><td><button type="submit" class="btn">Predict</button></td></tr>
+	</form>
+        <tr><td><h3>{{ prediction_text }}</h3></td></tr>
+    </table>
+  </div>
+</div>	
+</body>
+</html>
